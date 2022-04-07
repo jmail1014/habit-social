@@ -1,42 +1,61 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const bcrypt = require('bcryptjs')
+const {User} = require('../models');
+
 
 const resolvers = {
     Query:{
+        me: async (parent, args, context) => {
+            if (context.user) {
+              const userData = await User.findOne({ _id: context.user._id })
+                .select('-__v -password')
+            
+              return userData;
+            }
+          
+            throw new AuthenticationError('Not logged in');
+          },
+        
+        users: async () => {
+            return User.find()
+            .select('-__v -password')
+        },
+        user: async (parent, { username }) => {
+            return User.findOne({ username })
+            .select('-__v -password')
+        },
+        comment: async (parent, { _id }, context, info) => {
+            await context.comment.findOne({_id});
+        },
 
     },
     Mutation:{
-        login: async (parent, { username, password }, context, info) => {
-            const user = await context.user({ username })
-           
-            if (!user) {
-                throw new AuthenticationError('Invalid Login')
-              }
-              const passwordMatch = await bcrypt.compare(password, user.password)
 
-              if (!passwordMatch) {
-                throw new AuthenticationError('Invalid Login')
-              }
-              const token = signToken(user);
-              return { token, user };
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+          
+            if (!user) {
+              throw new AuthenticationError('Incorrect credentials');
+            }
+          
+            const correctPw = await user.isCorrectPassword(password);
+          
+            if (!correctPw) {
+              throw new AuthenticationError('Incorrect credentials');
+            }
+          
+            const token = signToken(user);
+            return { token, user };
         },
-        addUser: async (parent,{username,email,password},context,info)=>{
-            const hashedPassword = await bcrypt.hash(password,10)
-            // Not sure how to add the email here
-            const user = await context.user.createUser({
-                username,
-                //eamil
-                password:hashedPassword,
-            })
-            return user
+
+        addUser: async (parent, args) => {
+            const user = await User.create(args);
+            const token = signToken(user);
+          
+            return { token, user };
         },
-    },
-    addComment:async(parent,args,context,info) => {
-        const user = await context.user({ username })
     }
-        
-};   
+};
 
 
 module.exports = resolvers;
