@@ -7,13 +7,13 @@ type User {
     _id: ID
     username: String 
     email: String
-    status:[User]
+    status:[Status]
   }
 
   type Comment {
       _id:ID
-      commenttext:String
-      User:String
+      commenText:String
+      user:String
   }
 
   type Auth {
@@ -51,3 +51,5 @@ type User {
     
   }
   `;
+
+  module.exports = typeDefs;
