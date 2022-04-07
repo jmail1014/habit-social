@@ -1,0 +1,23 @@
+{
+  "name": "habit-social",
+  "version": "1.0.0",
+  "description": "A habit tracker built with the MERN stack that connects people by encouraging each other's goals.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmail1014/habit-social.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmail1014/habit-social/issues"
+  },
+  "homepage": "https://github.com/jmail1014/habit-social#readme",
+  "dependencies": {
+    "apollo-server": "^3.6.7",
+    "graphql": "^16.3.0"
+  }
+}
