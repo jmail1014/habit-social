@@ -40,9 +40,9 @@ mutation addComment($commentText: String!) {
 }
 `;
 
-export const ADD_STATUS = gql`
-mutation addStatus($statusText: String!) {
-    addStatus(statusText = $statusText) {
+export const ADD_REACTION = gql`
+mutation addReaction($statusText: String!) {
+    addReaction(statusText = $statusText) {
         _id
         statusText
         username

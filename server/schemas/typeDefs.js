@@ -47,7 +47,7 @@ type User {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addComment(commentText: String!, username:ID!): Status
-    addStatus(statusText: String!): Status
+    addReaction(statusText: String!): Status
     
   }
   `;
