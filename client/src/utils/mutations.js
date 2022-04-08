@@ -13,7 +13,7 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const ADD_USER = gql`
-mutation addUser($username: String!, $email: String!, password: String!) {
+mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
         token
         user {
@@ -42,7 +42,7 @@ mutation addComment($commentText: String!) {
 
 export const ADD_REACTION = gql`
 mutation addReaction($statusText: String!) {
-    addReaction(statusText = $statusText) {
+    addReaction(statusText : $statusText) {
         _id
         statusText
         username
