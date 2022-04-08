@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   ApolloProvider,
   ApolloClient,
@@ -14,7 +14,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import Signup from "./pages/Register";
+import Register from "./pages/Register";
 
 import "./App.css";
 
@@ -44,10 +44,12 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
+          <Routes>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signup" component={Register} />
             <Route exact path="/profile" component={Profile} />
+            </Routes>
           </div>
           <Footer />
         </div>
