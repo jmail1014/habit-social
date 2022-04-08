@@ -1,5 +1,20 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import "./App.css";
+
+const httpLink = createHttpLink({
+  uri: "http://localhost:3001/graphql",
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
