@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/jmail1014/habit-social#readme",
   "dependencies": {
+    "@apollo/client": "^3.5.10",
     "apollo-server": "^3.6.7",
-    "graphql": "^16.3.0"
+    "graphql": "^16.3.0",
+    "jsonwebtoken": "^8.5.1"
   }
 }
