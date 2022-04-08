@@ -14,7 +14,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import Signup from "./pages/Signup";
+import Signup from "./pages/Register";
 
 import "./App.css";
 
