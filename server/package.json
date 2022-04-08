@@ -1,4 +1,17 @@
 {
+ "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+ "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node seeders/seeds.js"
+  },
+
   "dependencies": {
     "apollo-server-express": "^3.6.7",
     "bcrypt": "^5.0.1",
@@ -6,17 +19,5 @@
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.10"
-  },
-  "name": "server",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "watch": "nodemon",
-    "seed": "node seeders/seeds.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }

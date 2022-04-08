@@ -27,8 +27,8 @@ type User {
       description:String
   }
 
-  type Status{
-    _id: ID
+  type Status {
+    _id: ID!
     statusText:String
     username:String
     createdAt:String
@@ -46,7 +46,7 @@ type User {
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addComment(commentText: String!): Status
+    addComment(commentText: String!, username:ID!): Status
     addStatus(statusText: String!): Status
     
   }
