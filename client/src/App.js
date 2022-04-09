@@ -19,7 +19,7 @@ import Register from "./pages/Register";
 import "./App.css";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -45,10 +45,10 @@ function App() {
           <Header />
           <div className="container">
           <Routes>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Register} />
-            <Route exact path="/profile" component={Profile} />
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
             </Routes>
           </div>
           <Footer />
