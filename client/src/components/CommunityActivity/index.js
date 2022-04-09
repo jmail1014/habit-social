@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { useMutation } from '@apollo/client';
 import { ADD_REACTION } from '../../utils/mutations';
-import { QUERY_REACTIONS, QUERY_ME } from '../../utils/queries';
+import { GET_REACTIONS, GET_ME } from '../../utils/queries';
 
 const CommunityActivity = () => {
     const [reactionText, setText] = useState('');
@@ -15,9 +15,9 @@ const CommunityActivity = () => {
         try {
           // update thought array's cache
           // could potentially not exist yet, so wrap in a try/catch
-          const { reactions } = cache.readQuery({ query: QUERY_REACTIONS });
+          const { reactions } = cache.readQuery({ query: GET_REACTIONS });
           cache.writeQuery({
-            query: QUERY_REACTIONS,
+            query: GET_REACTIONS,
             data: { reactions: [addReaction, ...reactions] },
           });
         } catch (e) {
@@ -25,9 +25,9 @@ const CommunityActivity = () => {
         }
   
         // update me object's cache
-        const { me } = cache.readQuery({ query: QUERY_ME });
+        const { me } = cache.readQuery({ query: GET_ME });
         cache.writeQuery({
-          query: QUERY_ME,
+          query: GET_ME,
           data: { me: { ...me, reactions: [...me.reactions, addReaction] } },
         });
       },
