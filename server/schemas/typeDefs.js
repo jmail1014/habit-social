@@ -35,12 +35,12 @@ type User {
   }
 
   type Query{
-    me:User
+    me: User
     users:[User]
     user(username: String!): User
     comments(username: String): [Comment]
     comment(_id: ID!): Comment
-    statuses:(username: String): [Status]
+    statuses(username: String): [Status]
     status(_id: ID!): Status 
   }
 

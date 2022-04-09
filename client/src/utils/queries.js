@@ -21,30 +21,29 @@ export const GET_ME = gql`
 }
 `;
 
-export const GET_USERS = gql`
-{
-    users {
-    _id
-    username
-    email
-    status {
-        _id
-        statusText
-        username
-        createdAt
-        comments {
-            _id
-            commentText
-            user
-        } 
-    }
-}
-}
-`;
+// export const GET_USERS = gql`
+// {
+//     users {
+//     _id
+//     username
+//     email
+//     status {
+//         _id
+//         statusText
+//         username
+//         createdAt
+//         comments {
+//             _id
+//             commentText
+//             user
+//         } 
+//     }
+// }
+// }
+// `;
 
 export const GET_USER = gql`
-{
-    user($username: String) {
+    query user($username: String!) {
     user(username: $username) {
         _id
         username
@@ -62,7 +61,6 @@ export const GET_USER = gql`
         }
     }
 }
-}
 `;
 
 export const GET_COMMENTS = gql`
@@ -76,7 +74,7 @@ query comments($username: String) {
 `;
 
 export const GET_COMMENT = gql`
-query comment($_id: ID) {
+query comment($_id: ID!) {
     comment(_id: $_id) {
         _id
         commentText
@@ -102,7 +100,7 @@ query statuses($username: String) {
 `;
 
 export const GET_REACTION = gql`
-query status($_id: ID) {
+query status($_id: ID!) {
     status(_id: $_id) {
         _id
         statusText
