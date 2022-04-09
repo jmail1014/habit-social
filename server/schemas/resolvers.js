@@ -70,9 +70,9 @@ const resolvers = {
           throw new AuthenticationError('You need to be logged in!');
         },
 
-        addStatus: async (parent, args, context) => {
+        addReaction: async (parent, args, context) => {
           if (context.user) {
-            const status = await Status.create({ ...args, username: context.user.username });
+            const reaction = await Status.create({ ...args, username: context.user.username });
         
             await User.findByIdAndUpdate(
               { _id: context.user._id },
@@ -80,7 +80,7 @@ const resolvers = {
               { new: true }
             );
         
-            return status;
+            return reaction;
           }
         
           throw new AuthenticationError('You need to be logged in!');
