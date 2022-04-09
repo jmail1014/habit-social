@@ -1,7 +1,8 @@
 import gql from "graphql-tag";
 
 export const GET_ME = gql`
-me {
+{
+    me {
     _id
     username
     email
@@ -17,10 +18,12 @@ me {
         }
     }
 }
+}
 `;
 
 export const GET_USERS = gql`
-users {
+{
+    users {
     _id
     username
     email
@@ -36,10 +39,12 @@ users {
         } 
     }
 }
+}
 `;
 
 export const GET_USER = gql`
-user($username: String) {
+{
+    user($username: String) {
     user(username: $username) {
         _id
         username
@@ -57,10 +62,11 @@ user($username: String) {
         }
     }
 }
+}
 `;
 
 export const GET_COMMENTS = gql`
-comments($username: String) {
+query comments($username: String) {
     comments(username: $username) {
         _id
         commentText
@@ -70,7 +76,7 @@ comments($username: String) {
 `;
 
 export const GET_COMMENT = gql`
-comment($_id: ID) {
+query comment($_id: ID) {
     comment(_id: $_id) {
         _id
         commentText
@@ -80,7 +86,7 @@ comment($_id: ID) {
 `;
 
 export const GET_REACTIONS = gql`
-statuses($username: String) {
+query statuses($username: String) {
     statuses(username: $username) {
         _id
         statusText
@@ -96,7 +102,7 @@ statuses($username: String) {
 `;
 
 export const GET_REACTION = gql`
-status($_id: ID) {
+query status($_id: ID) {
     status(_id: $_id) {
         _id
         statusText
