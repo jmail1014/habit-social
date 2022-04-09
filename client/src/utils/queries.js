@@ -78,3 +78,35 @@ comment($_id: ID) {
     }
 }
 `;
+
+export const GET_REACTIONS = gql`
+statuses($username: String) {
+    statuses(username: $username) {
+        _id
+        statusText
+        username
+        createdAt
+        comments {
+            _id
+            commentText
+            user
+        }
+    }
+}
+`;
+
+export const GET_REACTION = gql`
+status($_id: ID) {
+    status(_id: $_id) {
+        _id
+        statusText
+        username
+        createdAt
+        comments {
+            _id
+            commentText
+            user
+        }
+    }
+}
+`;

@@ -41,6 +41,8 @@ type User {
     user(username:String!): User
     comments(username:String): [Comment]
     comment(_id:ID!): Comment
+    statuses:(username: String): [Status]
+    status(_id: ID): Status 
   }
 
   type Mutation {
