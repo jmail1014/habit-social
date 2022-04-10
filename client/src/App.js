@@ -19,7 +19,7 @@ import Register from "./pages/Register";
 import "./App.css";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -44,11 +44,11 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/profile" element={<Profile />}></Route>
+            <Routes>
+              <Route path="/" element={Home}></Route>
+              <Route path="/login" element={Login}></Route>
+              <Route path="/register" element={Register}></Route>
+              <Route path="/profile" element={Profile}></Route>
             </Routes>
           </div>
           <Footer />
