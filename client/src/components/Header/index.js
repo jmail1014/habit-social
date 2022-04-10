@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Login from "../../pages/Login";
+import Register from "../../pages/Register";
 
 import Auth from "../../utils/auth";
 
@@ -25,8 +27,8 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
+              <Login to="/login">Login</Login>
+              <Register to="/register">Register</Register>
             </>
           )}
         </nav>
