@@ -16,7 +16,8 @@ const Home = () => {
           <h1>Habit Social</h1>
         </Link>
 
-        <nav>
+        <nav bg="light" variant="light">
+          <container>
           {Auth.loggedIn() ? (
             <>
               <Link to="/profile">Me</Link>
@@ -30,6 +31,7 @@ const Home = () => {
               <Link to="/register">Signup</Link>
             </>
           )}
+          </container>
         </nav>
       </div>
     </header>
