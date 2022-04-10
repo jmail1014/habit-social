@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
+import Navbar from 'react-bootstrap/Navbar'
 
 import Auth from "../../utils/auth";
 
@@ -14,10 +15,11 @@ const Header = () => {
   return (
     <header>
       <div>
-        <Link to="/">
-          <h1>Habit Social</h1>
-        </Link>
-        <nav>
+      
+  <Navbar expand="lg" variant="dark" bg="dark" >
+      <Navbar.Brand href="/"><h1>Habit Social</h1></Navbar.Brand>
+  </Navbar>
+        <div>
           {Auth.loggedIn() ? (
             <>
               <Link to="/profile">My Habits</Link>
@@ -31,7 +33,7 @@ const Header = () => {
               <Register to="/register">Register</Register>
             </>
           )}
-        </nav>
+        </div>
       </div>
     </header>
   );

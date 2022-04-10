@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
   uri: "/graphql",

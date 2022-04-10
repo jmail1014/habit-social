@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import Button from 'react-bootstrap/Button'
 
 const Register = () => {
     const [formState, setFormState] = useState({
@@ -35,11 +36,11 @@ const handleFormSubmit = async (event) => {
 };
 
 return (
-    <main>
-        <div>
-            <div>
-                <h4> Register!</h4>
-                <div>
+    <main className="flex-row justify-center mb-4">
+        <div className="col-12 col-lg" >
+            <div className="card">
+                <h4 className="card-header"> Register!</h4>
+                <div className='card-body'>
                     <form onSubmit={handleFormSubmit}>
                         <input
                         className='form-input'
@@ -68,9 +69,7 @@ return (
                         value={formState.password}
                         onChange={handleChange}
                         />
-                        <button className='btn' type='submit'>
-                            Submit
-                        </button>
+                        <Button variant="dark">Submit</Button>{' '}
                     </form>
                     {error && <div>Signup Failed</div>}
                 </div>
