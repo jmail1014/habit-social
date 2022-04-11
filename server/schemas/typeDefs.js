@@ -21,6 +21,31 @@ type User {
   }
 
   type Habit {
+    type Category {
+      _id: ID
+      name: String
+    }
+  
+    type Product {
+      _id: ID
+      name: String
+      description: String
+      image: String
+      quantity: Int
+      price: Float
+      category: Category
+    }
+  
+    type Order {
+      _id: ID
+      purchaseDate: String
+      products: [Product]
+    }
+
+    type Checkout {
+      session: ID
+    }
+
       _id: ID
       name:String
       description:String
@@ -35,6 +60,9 @@ type User {
   }
 
   type Query{
+    categories: [Category]
+    products(category: ID, name: String): [Product]
+    product(_id: ID!): Product
     me: User
     users:[User]
     user(username: String!): User
@@ -42,6 +70,8 @@ type User {
     comment(_id: ID!): Comment
     statuses(username: String): [Status]
     status(_id: ID!): Status 
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
   }
 
   type Mutation {
@@ -49,6 +79,8 @@ type User {
     addUser(username: String!, email: String!, password: String!): Auth
     addComment(commentText: String!, username: String!): Status
     addReaction(statusText: String!): Status
+    updateProduct(_id: ID!, quantity: Int!): Product
+    addOrder(products: [ID]!): Order
   }
   `;
 
