@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   ApolloProvider,
   ApolloClient,
@@ -41,20 +41,20 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+      <BrowserRouter>
+        {/* <div className="flex-column justify-flex-start min-100-vh"> */}
           <Header />
-          <div className="container">
+          {/* <div className="container"> */}
             <Routes>
-              <Route path="/" element={Home}></Route>
-              <Route path="/login" element={Login}></Route>
-              <Route path="/register" element={Register}></Route>
-              <Route path="/profile" element={Profile}></Route>
+              <Route path="/" element={<Home/>}></Route>
+              <Route path="/login" element={<Login/>}></Route>
+              <Route path="/register" element={<Register/>}></Route>
+              <Route path="/profile" element={<Profile/>}></Route>
             </Routes>
-          </div>
+          {/* </div> */}
           <Footer />
-        </div>
-      </Router>
+        {/* </div> */}
+      </BrowserRouter>
     </ApolloProvider>
   );
 }

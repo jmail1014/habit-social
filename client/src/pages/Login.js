@@ -51,7 +51,7 @@ const Login = (props) => {
                 placeholder="Your email"
                 name="email"
                 type="email"
-                id="email"
+                id="current-email"
                 value={formState.email}
                 onChange={handleChange}
               />
@@ -59,8 +59,9 @@ const Login = (props) => {
                 className="form-input"
                 placeholder="******"
                 name="password"
+                autoComplete='on'
                 type="password"
-                id="password"
+                id="current-password"
                 value={formState.password}
                 onChange={handleChange}
               />
