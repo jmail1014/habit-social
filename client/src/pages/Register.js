@@ -5,11 +5,8 @@ import Auth from '../utils/auth';
 import Button from 'react-bootstrap/Button'
 
 const Register = () => {
-    const [formState, setFormState] = useState({
-        username: '',
-        email: '',
-        password: '',
-    });
+    const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+    console.log(formState,setFormState);
 const [addUser, { error }] = useMutation(ADD_USER);
 
 const handleChange = (event) => {
