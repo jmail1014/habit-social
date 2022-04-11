@@ -17,9 +17,10 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -44,11 +45,11 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-          <Routes>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Register} />
-            <Route exact path="/profile" component={Profile} />
+            <Routes>
+              <Route path="/" element={Home}></Route>
+              <Route path="/login" element={Login}></Route>
+              <Route path="/register" element={Register}></Route>
+              <Route path="/profile" element={Profile}></Route>
             </Routes>
           </div>
           <Footer />
