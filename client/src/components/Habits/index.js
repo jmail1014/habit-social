@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
 import HabitsList from "../CurrentHabits";
 // need to npm i uuid so app can generate random id for habits
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 const localStorageKey = 'habitsList.habit'
 

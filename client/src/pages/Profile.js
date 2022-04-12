@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 
 import Reaction from "../components/Reaction";
+import Habits from '../components/Habits'
 
 import { useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
@@ -39,6 +40,7 @@ const Profile = (props) => {
       </div>
 
       <div>
+        <Habits />
         <div>
           <Reaction
             reactions={user.reactions}
