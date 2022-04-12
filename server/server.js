@@ -14,15 +14,18 @@ const startServer = async () => {
     typeDefs,
     resolvers,
     context: authMiddleware,
+    introspection: true
   });
   await server.start();
+
   server.applyMiddleware({ app });
+
   console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
 };
 
 startServer()
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve up static assets
