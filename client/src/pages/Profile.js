@@ -3,7 +3,7 @@ import { Navigate, useParams } from "react-router-dom";
 
 // 
 
-import Reaction from "../components/Reaction";
+import Reaction from "../components/Reaction/index.js";
 // import Habit from "../components/Habits";
 // import CurrentHabits from "../components/CurrentHabits";
 
