@@ -1,11 +1,12 @@
 import React from 'react';
 
 import Reaction from '../components/Reaction';
-import { Navigate, useParams } from 'react-router-dom';
+// import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { GET_USER, GET_ME } from '../utils/queries';
-import Auth from '../utils/auth';
+//import Auth from '../utils/auth';
 
 const Profile = () =>{
   const { username: userParam } = useParams();
@@ -15,10 +16,10 @@ const Profile = () =>{
   });
 
   const user = data?.me || data?.user || {};
-
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile" />;
-  }
+console.log(user);
+  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //   return <Navigate to="/profile"/>;
+  // }
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -34,6 +35,7 @@ const Profile = () =>{
 <div className="flex-row mb-3">
   <h2 className="bg-dark text-secondary p-3 display-inline-block">
     Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+    
   </h2>
   </div>
   <div className="mb-3">{!userParam && <Reaction />}</div>

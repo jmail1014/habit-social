@@ -14,11 +14,10 @@ import { setContext } from "@apollo/client/link/context";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import Home from "./pages/Home.js";
-import Login from "./pages/Login.js";
+ //import Home from "./pages/Home.js";
+ import Login from "./pages/Login.js";
 import Profile from "./pages/Profile.js";
-import Register from "./pages/Register.js";
-//import UserComment from "./pages/UserComment";
+ import Register from "./pages/Register.js";
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,16 +45,16 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
+           <Header />
+          <Profile /> 
+           <div className="container">
             <Routes>
-              <Route exact path="/" component={Home}/>
+              {/* <Route exact path="/" component={Home}/> */}
               <Route exact path="/login" component={Login}/>
               <Route exact path="/register" component={Register}/>
-              <Route exact path="/profile/:username" component={<Profile />}/>
-
+              <Route exact path="/profile/:username?"component = {Profile}/>
             </Routes>
-          </div>
+          </div> 
           <Footer />
         </div>
       </Router>

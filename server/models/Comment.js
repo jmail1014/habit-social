@@ -27,7 +27,7 @@ const CommentSchema = new Schema(
       },
     }
   );
-  CommentSchema.virtual('reactionCount').get(function() {
+  CommentSchema.virtual('Count').get(function() {
     return this.reactions.length;
   });
 
