@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 
-// 
+//
 
 import Reaction from "../components/Reaction/index.js";
 // import Habit from "../components/Habits";
@@ -12,15 +12,13 @@ import { GET_USER, GET_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
-
-const Profile = ( props ) => {
-
+const Profile = (props) => {
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? GET_USER : GET_ME, {
     variables: { username: userParam },
   });
-  
+
   const user = data?.me || data?.user || {};
   console.log(user);
 
@@ -35,8 +33,8 @@ const Profile = ( props ) => {
   if (!user?.username) {
     return (
       <h4>
-        You need to be logged in to see your profile. Use the navigation links above to
-        sign up or log in!
+        You need to be logged in to see your profile. Use the navigation links
+        above to sign up or log in!
       </h4>
     );
   }
@@ -48,12 +46,8 @@ const Profile = ( props ) => {
       </div>
 
       <div>
-        <div>
-          {/* <Habit /> */}
-        </div>
-        <div>
-          {/* <CurrentHabits /> */}
-        </div>
+        <div>{/* <Habit /> */}</div>
+        <div>{/* <CurrentHabits /> */}</div>
         <div>
           <Reaction
             reactions={user.reactions}
