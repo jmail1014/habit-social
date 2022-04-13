@@ -28,13 +28,11 @@ export const ADD_COMMENT = gql`
   mutation addComment($commentText: String!) {
     addComment(commentText: $commentText) {
       _id
-      comments {
         commentText
         createdAt
         Count
         reactions {
             _id
-        }
        }
     }
   }
