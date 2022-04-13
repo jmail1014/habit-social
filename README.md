@@ -21,6 +21,8 @@ Challenges
 
 ## Screenshot:
 ![habit-social-login](https://user-images.githubusercontent.com/45181939/163252373-129304a8-00e1-4311-b64b-69e795218687.png)
+![habit-social-profile](https://user-images.githubusercontent.com/45181939/163253809-906fb47d-bb11-4e39-a581-42f405690b70.png)
+
 
 ## Deployed application
 [Habit Social](https://thawing-sea-89785.herokuapp.com)
