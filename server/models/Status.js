@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const CommentSchema = require('./Comment');
+//const CommentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 
@@ -21,14 +21,11 @@ const statusSchema = new Schema(
         get: createdAtVal => dateFormat(createdAtVal)
     },
 },
+
     {
     toJSON: {
         getters: true
         }
     }
 );
-
-  
-  const Status = model('Status', statusSchema);
-  
-  module.exports = Status;
+module.exports = statusSchema;
