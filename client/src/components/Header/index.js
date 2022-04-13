@@ -16,14 +16,14 @@ const Header = () => {
     <header>
       <div>
       
-  <Navbar expand="lg" variant="dark" bg="dark" >
+  <Navbar expand="lg" variant="dark" bg="dark">
       <Navbar.Brand href="/"><h1>Habit Social</h1></Navbar.Brand>
   </Navbar>
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">My Habits</Link>
-              <a href="/" onClick={logout}>
+              <Link className="habits" to="/profile">My Habits</Link>
+              <a className="logout" href="/" onClick={logout}>
                 Logout
               </a>
             </>
