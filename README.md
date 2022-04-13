@@ -21,7 +21,7 @@ Challenges
 
 ## Screenshot:
 ![habit-social-login](https://user-images.githubusercontent.com/45181939/163252373-129304a8-00e1-4311-b64b-69e795218687.png)
-![habit-social-profile](https://user-images.githubusercontent.com/45181939/163280577-e5fbf4d3-7771-4975-b15a-c30305de2940.png)
+![habit-social-profile](https://user-images.githubusercontent.com/45181939/163283598-3d61f6aa-a7c3-4bc2-8f1c-19509f18382c.png)
 
 
 ## Deployed application
