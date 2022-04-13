@@ -12,3 +12,44 @@ code {
     monospace;
 }
 
+.habits {
+  background-color: darkgrey; 
+  border: 5px;
+  border-style: groove;
+  border-color: black;
+  color: aliceblue;
+  text-decoration: none;
+  margin-left: 5px;
+  padding: .25%;
+  border-radius: 13%;
+}
+
+.logout {
+  background-color: darkgrey; 
+  border: 5px;
+  border-style: groove;
+  border-color: black;
+  color: aliceblue;
+  text-decoration: none;
+  margin-left: 5px;
+  border-radius: 13%;
+  padding: .25%;
+}
+
+.habits:hover{
+  color: black;
+  border-color: gray;
+}
+
+.logout:hover{
+  color: black;
+  border-color: gray;
+}
+:link :hover {
+background-color: gray;
+border: 5px;
+border-style: groove;
+border-radius: 13%;
+}
+
+
