@@ -2,7 +2,7 @@
 import React from "react";
 import Habit from "../Habit";
 
-export default function HabitsList(habits, clickHabit) {
+const HabitsList = (habits, clickHabit) => {
     return(
         habits.map(habit => {
             return <Habit key={habit.id} clickHabit={clickHabit} habit={habit} />
@@ -10,3 +10,4 @@ export default function HabitsList(habits, clickHabit) {
     )
 }
 
+export default HabitsList

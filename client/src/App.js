@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import {
   ApolloProvider,
@@ -14,10 +14,10 @@ import { setContext } from "@apollo/client/link/context";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import Register from "./pages/Register";
+// import Home from "./pages/Home.js";
+// import Login from "./pages/Login.js";
+import Profile from "./pages/Profile.js";
+// import Register from "./pages/Register.js";
 
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,14 +46,15 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
-          <div className="container">
+          <Profile />
+          {/* <div className="container">
             <Routes>
-              <Route exact path="/" Component={Home}/>
-              <Route exact path="/login" Component={Login}/>
-              <Route exact path="/register" Component={Register}/>
-              <Route exact path="/profile" Component={Profile}/>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/login" component={Login}/>
+              <Route exact path="/register" component={Register}/>
+              <Route exact path="/profile" component={<Profile />}/>
             </Routes>
-          </div>
+          </div> */}
           <Footer />
         </div>
       </Router>
