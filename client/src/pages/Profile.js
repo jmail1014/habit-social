@@ -56,8 +56,8 @@ const Profile = ( props ) => {
         </div>
         <div>
           <Reaction
-            // reactions={user.reactions}
-            // title={`${user.username}'s reactions...`}
+            reactions={user.reactions}
+            title={`${user.username}'s reactions...`}
           />
         </div>
       </div>
