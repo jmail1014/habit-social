@@ -25,33 +25,30 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($commentText: String!, $username: String!) {
-    addComment(commentText: $commentText, username: $username) {
+  mutation addComment($commentText: String!) {
+    addComment(commentText: $commentText) {
       _id
-      statusText
-      username
-      createdAt
-      comments {
-        _id
         commentText
-        User
-      }
+        createdAt
+        Count
+        reactions {
+            _id
+       }
     }
   }
 `;
 
 export const ADD_REACTION = gql`
-  mutation addReaction($statusText: String!) {
-    addReaction(statusText: $statusText) {
+  mutation addReaction($commentId: ID!, $statusText: String!) {
+    addReaction(commentId:$commentId, statusText: $statusText) {
       _id
-      statusText
-      username
-      createdAt
-      comments {
-        _id
-        commentText
-        User
-      }
+        Count
+        reactions {
+            _id
+            createdAt
+            statusText
+            username
+        }    
     }
   }
 `;

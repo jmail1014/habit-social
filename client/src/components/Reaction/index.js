@@ -3,22 +3,23 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 // please check these on backend
-import { ADD_REACTION } from '../../utils/mutations';
-import { GET_REACTIONS, GET_ME } from '../../utils/queries';
+import { ADD_COMMENT} from '../../utils/mutations';
+import { GET_COMMENT, GET_ME } from '../../utils/queries';
 
 const Reaction = () => {
-  const [reactionText, setText] = useState('');
+  const [commentText, setText] = useState('');
+  console.log(commentText);
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addReaction, { error }] = useMutation(ADD_REACTION, {
-    update(cache, { data: { addReaction } }) {
+  const [addComment, { error }] = useMutation(ADD_COMMENT, {
+    update(cache, { data: { addComment } }) {
       try {
         // update thought array's cache
         // could potentially not exist yet, so wrap in a try/catch
-        const { reactions } = cache.readQuery({ query: GET_REACTIONS });
+        const { comments } = cache.readQuery({ query: GET_COMMENT });
         cache.writeQuery({
-          query: GET_REACTIONS,
-          data: { reactions: [addReaction, ...reactions] },
+          query: GET_COMMENT,
+          data: { comments: [addComment, ...comments] },
         });
       } catch (e) {
         console.error(e);
@@ -28,7 +29,7 @@ const Reaction = () => {
       const { me } = cache.readQuery({ query: GET_ME });
       cache.writeQuery({
         query: GET_ME,
-        data: { me: { ...me, reactions: [...me.reactions, addReaction] } },
+        data: { me: { ...me, comments: [...me.comments, addComment] } },
       });
     },
   });
@@ -46,8 +47,8 @@ const Reaction = () => {
     event.preventDefault();
 
     try {
-      await addReaction({
-        variables: { reactionText },
+      await addComment({
+        variables: { commentText },
       });
 
       // clear form value
@@ -72,7 +73,7 @@ const Reaction = () => {
       >
         <textarea
           placeholder="How do you feel about your habit progress..."
-          value={reactionText}
+          value={commentText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>

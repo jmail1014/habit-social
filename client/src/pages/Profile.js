@@ -9,16 +9,20 @@ import Reaction from "../components/Reaction";
 
 import { useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
+
+const Profile = ( props) => {
+
 import Auth from "../utils/auth";
 
-const Profile = (loading, props) => {
+
   const { username: userParam } = useParams();
+
   const { data } = useQuery(userParam ? GET_USER : GET_ME, {
     variables: { username: userParam },
   });
   
-
   const user = data?.me || data?.user || {};
+  console.log(user);
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/profile" />;
@@ -40,7 +44,7 @@ const Profile = (loading, props) => {
   return (
     <div>
       <div>
-        <h2>Welcome {userParam ? `${user.username}` : "to your profile."}</h2>
+        <h2>Welcome {userParam ? `${user.username}'s` : "to your profile."}</h2>
       </div>
 
       <div>
@@ -52,12 +56,12 @@ const Profile = (loading, props) => {
         </div>
         <div>
           <Reaction
-            reactions={user.reactions}
-            title={`${user.username}'s reactions...`}
+            // reactions={user.reactions}
+            // title={`${user.username}'s reactions...`}
           />
         </div>
       </div>
-      <div>{!userParam && <Reaction />}</div>
+      <div></div>
     </div>
   );
 };

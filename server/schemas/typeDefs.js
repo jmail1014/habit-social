@@ -6,50 +6,52 @@ type User {
     _id: ID
     username: String 
     email: String
-    status: Status
-  }
+    comments: [Comment]
+}
 
-  type Comment {
-      _id:ID
-      commentText:String
-      user:String
-  }
+type Comment {
+    _id: ID
+    commentText: String
+    createdAt: String
+    username: String
+    Count:Int
+    reactions:[Reaction]
+}
 
-  type Auth {
+type Auth {
     token: ID
     user: User
-  }
+}
 
-  type Habit {
-      _id: ID
-      name:String
-      description:String
-  }
+type Habit {
+    _id: ID
+    name: String
+    description: String
+}
+  
+type Reaction {
+  _id: ID!
+  statusText: String
+  username: String
+  createdAt:String
+}
 
-  type Status {
-    _id: ID!
-    statusText:String
-    username:String
-    createdAt:String
-    comments:[Comment]
-  }
-
-  type Query{
-    me: User
+type Query {
+    me:User
     users:[User]
-    user(username: String!): User
+    user(username: String!):User
     comments(username: String): [Comment]
     comment(_id: ID!): Comment
-    statuses(username: String): [Status]
-    status(_id: ID!): Status 
-  }
+}
 
-  type Mutation {
+type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addComment(commentText: String!, username: String!): Status
-    addReaction(statusText: String!): Status
-  }
-  `;
+    addComment(commentText: String! ): Comment
+    addReaction(commentId: ID!, statusText: String!): Comment
+
+}
+
+`;
 
 module.exports = typeDefs;
