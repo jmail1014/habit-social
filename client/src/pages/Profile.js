@@ -1,37 +1,41 @@
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+// Navigate,
 
 import Reaction from "../components/Reaction";
-import Habits from '../components/Habits'
+// import Habit from "../components/Habits";
+// import CurrentHabits from "../components/CurrentHabits";
 
 import { useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 
-const Profile = (props) => {
+const Profile = (loading, props) => {
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(userParam ? GET_USER : GET_ME, {
+  const { data } = useQuery(userParam ? GET_USER : GET_ME, {
     variables: { username: userParam },
   });
+  
 
   const user = data?.me || data?.user || {};
 
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile" />;
-  }
+  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //   return <Navigate to="/profile" />;
+  // }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (!user?.username) {
-    return (
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
-    );
-  }
+  // if (!user?.username) {
+  //   return (
+  //     <h4>
+  //       You need to be logged in to see this. Use the navigation links above to
+  //       sign up or log in!
+  //     </h4>
+  //   );
+  // }
 
   return (
     <div>
@@ -40,7 +44,12 @@ const Profile = (props) => {
       </div>
 
       <div>
-        <Habits />
+        <div>
+          {/* <Habit /> */}
+        </div>
+        <div>
+          {/* <CurrentHabits /> */}
+        </div>
         <div>
           <Reaction
             reactions={user.reactions}

@@ -71,7 +71,7 @@ const Reaction = () => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Here's a new thought..."
+          placeholder="How do you feel about your habit progress..."
           value={reactionText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
