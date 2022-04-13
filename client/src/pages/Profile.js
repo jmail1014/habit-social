@@ -10,14 +10,14 @@ import Reaction from "../components/Reaction";
 import { useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
 
-const Profile = ( props) => {
-
 import Auth from "../utils/auth";
 
 
+const Profile = ( props ) => {
+
   const { username: userParam } = useParams();
 
-  const { data } = useQuery(userParam ? GET_USER : GET_ME, {
+  const { loading, data } = useQuery(userParam ? GET_USER : GET_ME, {
     variables: { username: userParam },
   });
   
@@ -35,7 +35,7 @@ import Auth from "../utils/auth";
   if (!user?.username) {
     return (
       <h4>
-        You need to be logged in to see this. Use the navigation links above to
+        You need to be logged in to see your profile. Use the navigation links above to
         sign up or log in!
       </h4>
     );
