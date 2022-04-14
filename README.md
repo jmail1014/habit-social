@@ -20,7 +20,8 @@ Challenges
 - React Bootstrap
 
 ## Screenshot:
-![habit-social-login](https://user-images.githubusercontent.com/45181939/163252373-129304a8-00e1-4311-b64b-69e795218687.png)
+![habit-social-login](https://user-images.githubusercontent.com/45181939/163475780-566eae8f-3659-4eaa-829b-c8217c30aa79.png)
+
 ![habit-social-profile](https://user-images.githubusercontent.com/45181939/163283598-3d61f6aa-a7c3-4bc2-8f1c-19509f18382c.png)
 
 
