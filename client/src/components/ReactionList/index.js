@@ -1,41 +1,65 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
-const ReactionList = ({comments,title}) =>{
-    if(!comments.length) {
-        return <h3>No Comments Yet</h3>;
+import { useMutation } from '@apollo/client';
+import { ADD_REACTION } from '../../utils/mutations';
+
+const ReactionForm = ({ thoughtId }) => {
+  const [statusText, setBody] = useState('');
+  const [characterCount, setCharacterCount] = useState(0);
+  const [addReaction, { error }] = useMutation(ADD_REACTION);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    if (event.target.value.length <= 280) {
+      setBody(event.target.value);
+      setCharacterCount(event.target.value.length);
     }
+  };
 
-    return(
-<div>
-<h3>{title}</h3>
-{comments &&
-       comments.map(comment => (
-          <div key={comment._id} className="card mb-3">
-            <p className="card-header">
-  <Link
-    to={`/profile/${comment.username}`}
-    style={{ fontWeight: 700 }}
-    className="text-light"
-  >
-    {comment.username}
-  </Link>{' '}
-  thought on {comment.createdAt}
-</p>
-<div className="card-body">
-  <Link to={`/comment/${comment._id}`}>
-    <p>{comment.commentText}</p>
-    <p className="mb-0">
-      Reactions: {comment.Count} || Click to{' '}
-      {comment.Count ? 'see' : 'start'} the discussion!
-    </p>
-  </Link>
-</div>
-          </div>
-        ))}
-</div>
-    );
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      await addReaction({
+        variables: { statusText, commentId },
+      });
+
+      // clear form value
+      setBody('');
+      setCharacterCount(0);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return (
+    <div>
+      <p
+        className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+      >
+        Character Count: {characterCount}/280
+        {error && <span className="ml-2">Something went wrong...</span>}
+      </p>
+      <form
+        className="flex-row justify-center justify-space-between-md align-stretch"
+        onSubmit={handleFormSubmit}
+      >
+        <textarea
+          placeholder="Leave a reaction to this thought..."
+          value={statusText}
+          className="form-input col-12 col-md-9"
+          onChange={handleChange}
+        ></textarea>
+
+        <button className="btn col-12 col-md-3" type="submit">
+          Submit
+        </button>
+      </form>
+
+      {error && <div>Something went wrong...</div>}
+    </div>
+  );
 };
 
-
-export default ReactionList;
+export default ReactionForm;

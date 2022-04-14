@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactionList from '../components/ReactionList';
+import CommentList from '../components/CommentList';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { GET_COMMENT } from '../utils/queries';
 
 const UserComment = props =>{
-  console.log(props);
+
     const { id: commentId } = useParams();
 
     const { loading, data } = useQuery(GET_COMMENT, {
@@ -14,7 +14,7 @@ const UserComment = props =>{
     });
     
     const comment = data?.comment || {};
-    
+    console.log(comment);
     if (loading) {
       return <div>Loading...</div>;
     }
@@ -33,7 +33,7 @@ const UserComment = props =>{
             </div>
           </div>
         
-          {comment.Count > 0 && <ReactionList reactions={comment.reactions} />}
+          {comment.Count > 0 && <CommentList reactions={comment.reactions} />}
         </div>
           );
 };

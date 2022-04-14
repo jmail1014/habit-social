@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Reaction from '../components/Reaction';
-// import { Navigate, useParams } from 'react-router-dom';
+import Comments from '../components/Comments';
+//  import { Navigate, useParams } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
@@ -35,10 +35,10 @@ console.log(user);
 <div>
 <div className="flex-row mb-3">
   <h2 className="bg-dark text-secondary p-3 display-inline-block">
-  Welcome {user.username} : to your profile.
+  Welcome {user.username} to your profile.
   </h2>
   </div>
-  <div className="mb-3">{!userParam && <Reaction />}</div>
+  <div className="mb-3">{!userParam && <Comments />}</div>
 </div>
   );
 };

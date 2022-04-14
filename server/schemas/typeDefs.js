@@ -4,7 +4,7 @@ const typeDefs = gql`
 
 type User {
     _id: ID
-    username: String 
+    username: String
     email: String
     comments: [Comment]
 }
@@ -15,7 +15,7 @@ type Comment {
     createdAt: String
     username: String
     Count:Int
-    reactions:[Reaction]
+    reactions: [Reaction]
 }
 
 type Auth {
@@ -30,17 +30,17 @@ type Habit {
 }
   
 type Reaction {
-  _id: ID!
+  _id: ID
   statusText: String
   username: String
-  createdAt:String
+  createdAt: String
 }
 
 type Query {
-    me:User
-    users:[User]
-    user(username: String!):User
-    comments(username: String): [Comment]
+    me: User
+    users: [User]
+    user(username: String!): User
+    comments(username: String!): [Comment]
     comment(_id: ID!): Comment
 }
 
