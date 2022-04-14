@@ -60,8 +60,8 @@ const resolvers = {
         
             await User.findByIdAndUpdate(
               { _id: context.user._id },
-              { $push: { comments: comment._id} },
-              { new: true }
+              { $push: { comments: comment._id ,username:context.user.username} },
+              { new: true, runValidators: true }
             );
         
             return comment;
@@ -77,7 +77,7 @@ const resolvers = {
             await User.findByIdAndUpdate(
               { _id: commentId},
               { $push: { reactions: { statusText, username: context.user.username } }  },
-              { new: true }
+              { new: true, runValidators: true }
             );
         
             return reaction;

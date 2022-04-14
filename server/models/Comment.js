@@ -10,7 +10,7 @@ const CommentSchema = new Schema(
       },
       commentText: {
         type: String,
-        required: 'You need to leave a Comment!',
+        required: true,
         minlength: 1,
         maxlength: 280
       },
@@ -23,6 +23,7 @@ const CommentSchema = new Schema(
     },
     {
       toJSON: {
+        virtuals: true,
         getters: true
       },
     }

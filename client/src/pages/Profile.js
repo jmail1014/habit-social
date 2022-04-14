@@ -17,6 +17,7 @@ const Profile = () =>{
 
   const user = data?.me || data?.user || {};
 console.log(user);
+
   // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
   //   return <Navigate to="/profile"/>;
   // }
@@ -34,8 +35,7 @@ console.log(user);
 <div>
 <div className="flex-row mb-3">
   <h2 className="bg-dark text-secondary p-3 display-inline-block">
-    Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-    
+  Welcome {user.username} : to your profile.
   </h2>
   </div>
   <div className="mb-3">{!userParam && <Reaction />}</div>
