@@ -9,6 +9,7 @@ export const GET_ME = gql`
        comments {
         commentText
         createdAt
+        username
         Count
         reactions {
             _id
@@ -53,6 +54,7 @@ export const GET_USER = gql`
             _id
             commentText
             createdAt
+            username
             Count
         }
     }
