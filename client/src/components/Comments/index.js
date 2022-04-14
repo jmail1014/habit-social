@@ -9,7 +9,7 @@ import { GET_COMMENT, GET_ME } from '../../utils/queries';
 const Comment= () => {
   const [commentText, setText] = useState('');
   console.log(commentText);
-  
+
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addComment, { error }] = useMutation(ADD_COMMENT, {
@@ -30,7 +30,7 @@ const Comment= () => {
       const { me } = cache.readQuery({ query: GET_ME });
       cache.writeQuery({
         query: GET_ME,
-        data: { me: { ...me, comments: [...me.comments, addComment] } },
+        data: { me: { ...me, comments: [...me.comment, addComment] } },
       });
     },
   });
