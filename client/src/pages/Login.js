@@ -6,7 +6,7 @@ import { useMutation } from "@apollo/client";
 import { Form,  Alert } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
-
+import { Navigate, useParams } from 'react-router-dom';
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
@@ -15,7 +15,7 @@ const Login = () => {
   const [login, { error }] = useMutation(LOGIN_USER);
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-
+  const { username: userParam } = useParams();
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -40,6 +40,9 @@ const Login = () => {
       console.error(err);
     }
 
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+      return <Navigate to="/profile"/>;
+    }
     setUserFormData({
       username: '',
       email: '',

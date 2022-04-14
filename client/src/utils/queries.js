@@ -9,6 +9,7 @@ export const GET_ME = gql`
        comments {
         commentText
         createdAt
+        username
         Count
         reactions {
             _id
@@ -50,8 +51,10 @@ export const GET_USER = gql`
         username
         email
         comments {
+            _id
             commentText
             createdAt
+            username
             Count
         }
     }
@@ -81,9 +84,9 @@ export const GET_COMMENT = gql`
 query comment($_id: ID!) {
     comment(_id: $_id) {
         _id
-        comments {
             commentText
             createdAt
+            username
             Count
             reactions {
                 _id
@@ -91,7 +94,6 @@ query comment($_id: ID!) {
                 statusText
                 username
             }
-           }
     }
 }
 `;

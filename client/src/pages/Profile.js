@@ -1,16 +1,17 @@
+
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
-
+//import { Navigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 //
-
-import Reaction from "../components/Reaction/index.js";
+import CommentList from "../components/CommentList";
+import Comments from "../components/Comments";
 // import Habit from "../components/Habits";
 // import CurrentHabits from "../components/CurrentHabits";
 
 import { useQuery } from "@apollo/client";
 import { GET_USER, GET_ME } from "../utils/queries";
 
-import Auth from "../utils/auth";
+//import Auth from "../utils/auth";
 
 const Profile = (props) => {
   const { username: userParam } = useParams();
@@ -22,9 +23,9 @@ const Profile = (props) => {
   const user = data?.me || data?.user || {};
   console.log(user);
 
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile" />;
-  }
+  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //   return <Navigate to="/profile" />;
+  // }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -38,25 +39,19 @@ const Profile = (props) => {
       </h4>
     );
   }
-
   return (
     <div>
-      <div>
-        <h2>Welcome {userParam ? `${user.username}'s` : "to your profile."}</h2>
-      </div>
+    <div className="flex-row mb-3">
+  <h2>Welcome {user.username} to your profile</h2>
+</div>
 
-      <div>
-        <div>{/* <Habit /> */}</div>
-        <div>{/* <CurrentHabits /> */}</div>
-        <div>
-          <Reaction
-            reactions={user.reactions}
-            title={`${user.username}'s reactions...`}
-          />
-        </div>
-      </div>
-      <div></div>
-    </div>
+      <div className="flex-row justify-space-between mb-3">
+     <div className="mb-3">{!userParam && <Comments />}</div>
+    </div>   
+  <div className="col-12 mb-3 col-lg-8">
+    <CommentList comments={user.comments} title={`${user.username}'s thoughts...`} />
+  </div>
+</div>
   );
 };
 

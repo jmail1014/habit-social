@@ -7,7 +7,7 @@ const statusSchema = new Schema(
 {
     statusText: {
         type: String,
-        required: 'You need to leave a Status!',
+        required: true,
         minlength: 1,
         maxlength: 280
     },
@@ -23,8 +23,8 @@ const statusSchema = new Schema(
 },
 
     {
-    toJSON: {
-        getters: true
+        toJSON: {
+            getters: true
         }
     }
 );

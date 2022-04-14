@@ -60,7 +60,7 @@ const resolvers = {
         
             await User.findByIdAndUpdate(
               { _id: context.user._id },
-              { $push: { comments: comment._id} },
+              { $push: { comments: comment._id } },
               { new: true }
             );
         
@@ -72,12 +72,12 @@ const resolvers = {
 
         addReaction: async (parent, {commentId, statusText}, context) => {
           if (context.user) {
-            const reaction = await Status.create({ ...args, username: context.user.username });
+            const reaction = await Comment.findByIdAndUpdate({ ...args, username: context.user.username });
         
             await User.findByIdAndUpdate(
               { _id: commentId},
               { $push: { reactions: { statusText, username: context.user.username } }  },
-              { new: true }
+              { new: true, runValidators: true }
             );
         
             return reaction;

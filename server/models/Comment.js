@@ -3,14 +3,14 @@ const reactionSchema = require('./Status');
 const dateFormat = require('../utils/dateFormat');
 
 const CommentSchema = new Schema(
-    {
+  {
       username: {
         type: String,
         required: true
       },
       commentText: {
         type: String,
-        required: 'You need to leave a Comment!',
+        required: true,
         minlength: 1,
         maxlength: 280
       },
@@ -18,19 +18,21 @@ const CommentSchema = new Schema(
         type: Date,
         default: Date.now,
         get: createdAtVal => dateFormat(createdAtVal)
-    },
+      },
       reactions: [reactionSchema]
-    },
+  },
     {
       toJSON: {
+        virtuals: true,
         getters: true
       },
-    }
-  );
-  CommentSchema.virtual('reactionCount').get(function() {
-    return this.reactions.length;
-  });
+  }
+);
 
-const Comment = model('Comment',CommentSchema)
+CommentSchema.virtual('Count').get(function() {
+    return this.reactions.length;
+});
+
+const Comment = model('Comment',CommentSchema);
 
 module.exports = Comment;
