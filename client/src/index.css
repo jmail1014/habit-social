@@ -52,4 +52,6 @@ border-style: groove;
 border-radius: 13%;
 }
 
-
+form {
+  border-radius: 13%;
+}
